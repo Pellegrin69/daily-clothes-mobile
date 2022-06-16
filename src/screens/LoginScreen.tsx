@@ -23,7 +23,7 @@ export const LoginScreen: FunctionComponent<Props> = ({navigation, route}) => {
                 <TextInput onChangeText={ text => setPassword(text) }
                            value={password}
                            placeholder="password"/>
-                <Button title="Login" onPress={() => login(identifier, password)} />
+                <Button title="Login" onPress={() => login(identifier, password, navigation)} />
 
             </ScrollView>
         </SafeAreaView>

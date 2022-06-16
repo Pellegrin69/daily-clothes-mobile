@@ -6,12 +6,12 @@ import {RegisterScreen} from "./screens/RegisterScreen";
 
 export type RootStackParamList = {
     Home: undefined;
-    Login: {
+    Login: undefined;
+    Profile: {
         id: string;
         title: string;
         description: string;
     };
-    Profile: undefined;
     Register: undefined;
 }
 
