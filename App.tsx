@@ -1,19 +1,8 @@
-import {NavigationContainer} from "@react-navigation/native";
-import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {HomeScreen} from "./src/screens/HomeScreens";
-
-const Stack = createNativeStackNavigator();
-
+import * as React from "react"
+import {MainContainer} from "./src/Navigation/MainContainer";
 
 export default function App() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="Home"
-                    component={HomeScreen}
-                    options={{ title: 'Daily Clothes' }}/>
-            </Stack.Navigator>
-        </NavigationContainer>
+        <MainContainer/>
     );
 }
