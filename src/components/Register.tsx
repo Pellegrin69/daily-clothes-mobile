@@ -3,17 +3,17 @@ import {User} from "../models/User";
 import {NavigationProp} from "@react-navigation/native";
 import {RootStackParamList} from "../RootStackParamList";
 import * as SecureStore from "expo-secure-store";
+import {API_URL} from "../ApiUrl";
 
 type RegisterResponse = {
     jwt: string
     user: User
 }
 
-const API_URL = "http://192.168.1.34:1337/api/auth/local";
 
-export const register = (username: string, email:string, password: string, navigation: NavigationProp<RootStackParamList>) => {
+export const register = (username: string, email: string, password: string, navigation: NavigationProp<RootStackParamList>) => {
     axios
-        .post(API_URL + "/register", {
+        .post(API_URL + "/auth/local/register", {
             username: username,
             email: email,
             password: password,

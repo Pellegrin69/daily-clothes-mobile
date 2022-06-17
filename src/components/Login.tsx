@@ -3,24 +3,20 @@ import axios from 'axios';
 import * as SecureStore from 'expo-secure-store';
 import {NavigationProp} from "@react-navigation/native";
 import {RootStackParamList} from "../RootStackParamList";
+import {API_URL} from "../ApiUrl";
 
 type LoginResponse = {
     jwt: string
     user: User
 }
 
-const API_URL = "http://10.212.33.75:1337/api/auth/local";
-
 export const login = (identifier: string, password: string, navigation: NavigationProp<RootStackParamList>) => {
-    console.log("log")
     axios
-        .post(API_URL, {
+        .post(API_URL + "/auth/local", {
             identifier: identifier,
             password: password,
         })
         .then(response => {
-            console.log("réussite")
-
             const loginRepsonse: LoginResponse = response.data
             saveKeyValuePair("userInfo", JSON.stringify((loginRepsonse.user)))
             saveKeyValuePair("userToken", loginRepsonse.jwt)
