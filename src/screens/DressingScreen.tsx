@@ -1,9 +1,14 @@
-import {View, Text, Button} from "react-native";
+import {View, Text, Button, FlatList, TouchableOpacity, TouchableHighlight} from "react-native";
 import React, {FunctionComponent} from "react";
 import {NavigationProp} from "@react-navigation/native";
 import {RootStackParamList} from "../RootStackParamList";
 import { Button as ButtonPaper, Dialog, Portal, Provider, Paragraph } from 'react-native-paper';
 import {AddClotheForm} from "../components/AddClotheForm";
+import {createClothe} from "../components/CRUDClothe";
+import {readClothe} from "../components/CRUDClothe";
+import {updateClothe} from "../components/CRUDClothe";
+import {deleteClothe} from "../components/CRUDClothe";
+import {Clothe} from "../models/Clothe";
 
 type Props = {
     navigation: NavigationProp<RootStackParamList>;
@@ -14,15 +19,31 @@ export const DressingScreen: FunctionComponent<Props> = ({navigation}) => {
     const showDialog = () => setIsOpen(true)
     const hideDialog = () => setIsOpen(false)
 
+    const [ clothes, setClothes ] = React.useState<Clothe[]>()
+
+    React.useEffect(() => {
+        readClothe()
+            .then(resp => {
+                setClothes(resp)
+                console.log("resp.data :", resp)
+            })
+            .catch(error => console.log(error))
+    }, [])
+
     return (
         <>
-            <View style={{ flex: 10, alignItems: "center", justifyContent: "center" }}>
-                <Text
-                    onPress={() => navigation.navigate("Home")}
-                    style={{ fontSize: 15, marginBottom: 50 }}
-                >
-                    Your dressing room is empty, add some to generate outfits
-                </Text>
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                <FlatList data={clothes} renderItem={({ item, index, separators }) => (
+                    <TouchableHighlight
+                        key={item.id}
+                        onPress={() => console.log("click")}
+                        onShowUnderlay={separators.highlight}
+                        onHideUnderlay={separators.unhighlight}
+                    >
+                        <Text>{item.name}</Text>
+                    </TouchableHighlight>
+                )}
+                />
                 <Button title={"Add a cloth"} onPress={showDialog}/>
             </View>
             <Provider>
