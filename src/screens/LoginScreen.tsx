@@ -1,13 +1,13 @@
 import {NavigationProp, RouteProp} from "@react-navigation/native";
 import {RootStackParamList} from "../RootStackParamList";
 import React, {FunctionComponent, useState} from "react";
-
-import {Button, SafeAreaView, ScrollView, Text, TextInput} from "react-native";
+import {SafeAreaView, View} from "react-native";
 import {login} from "../compononents/Login";
+import {TextInput, Button, Button as ButtonPaper} from "react-native-paper";
 
-type Props = {
-    navigation: NavigationProp<RootStackParamList>;
-    route: RouteProp<RootStackParamList>
+export type Props = {
+    navigation: NavigationProp<RootStackParamList>,
+    route: RouteProp<RootStackParamList>,
 }
 export const LoginScreen: FunctionComponent<Props> = ({navigation, route}) => {
 
@@ -15,17 +15,22 @@ export const LoginScreen: FunctionComponent<Props> = ({navigation, route}) => {
     const [password, setPassword] = useState("");
 
     return (
-        <SafeAreaView style={{height: '100%'}}>
-            <ScrollView style={{height: '100%'}}>
-                <TextInput onChangeText={ text => setIdentifier(text) }
-                           value={identifier}
-                           placeholder="example@gmail.com"/>
-                <TextInput onChangeText={ text => setPassword(text) }
-                           value={password}
-                           placeholder="password"/>
-                <Button title="Login" onPress={() => login(identifier, password, navigation)} />
+        <View style={{ flex: 1, justifyContent: "center", height: "100%" }}>
+            <TextInput
+                label="identifier"
+                value={identifier}
+                onChangeText={text => setIdentifier(text)}
+                mode={"outlined"}
+            />
+            <TextInput
+                label="password"
+                value={password}
+                onChangeText={text => setPassword(text)}
+                mode={"outlined"}
+            />
+            <Button style={{ marginTop: 30 }} onPress={() => login(identifier, password, navigation)}>Login</Button>
+            <Button style={{ marginTop: 30 }} onPress={() => navigation.navigate("Register")}>Create an account</Button>
 
-            </ScrollView>
-        </SafeAreaView>
+        </View>
     );
 };

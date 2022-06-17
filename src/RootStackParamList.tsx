@@ -1,3 +1,4 @@
+import * as React from "react";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {HomeScreen} from "./screens/HomeScreen";
 import {ProfileScreen} from "./screens/ProfileScreen";
@@ -18,21 +19,23 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export const RootNavigator = () => {
-    return <Stack.Navigator>
-        <Stack.Group screenOptions={{ headerStyle: { backgroundColor: 'purple' } }}>
-            <Stack.Screen
-                name="Home"
-                component={HomeScreen}/>
-            <Stack.Screen
-                name="Profile"
-                component={ProfileScreen}
-                options={{animation: "fade_from_bottom" }}/>
-            <Stack.Screen
-                name="Login"
-                component={LoginScreen}/>
-            <Stack.Screen
-                name="Register"
-                component={RegisterScreen}/>
-        </Stack.Group>
-    </Stack.Navigator>
+    return (
+        <Stack.Navigator>
+            <Stack.Group screenOptions={{headerStyle: {backgroundColor: 'purple'}}}>
+                <Stack.Screen
+                    name="Home"
+                    component={HomeScreen}/>
+                <Stack.Screen
+                    name="Profile"
+                    component={ProfileScreen}
+                    options={{animation: "fade_from_bottom"}}/>
+                <Stack.Screen
+                    name="Login"
+                    component={LoginScreen}/>
+                <Stack.Screen
+                    name="Register"
+                    component={RegisterScreen}/>
+            </Stack.Group>
+        </Stack.Navigator>
+    )
 }

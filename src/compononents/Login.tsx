@@ -9,15 +9,18 @@ type LoginResponse = {
     user: User
 }
 
-const API_URL = "http://192.168.1.34:1337/api/auth/local";
+const API_URL = "http://10.212.33.75:1337/api/auth/local";
 
 export const login = (identifier: string, password: string, navigation: NavigationProp<RootStackParamList>) => {
+    console.log("log")
     axios
         .post(API_URL, {
             identifier: identifier,
             password: password,
         })
         .then(response => {
+            console.log("réussite")
+
             const loginRepsonse: LoginResponse = response.data
             saveKeyValuePair("userInfo", JSON.stringify((loginRepsonse.user)))
             saveKeyValuePair("userToken", loginRepsonse.jwt)
