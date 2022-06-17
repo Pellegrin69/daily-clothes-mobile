@@ -3,7 +3,7 @@ import React, {FunctionComponent} from "react";
 import {NavigationProp} from "@react-navigation/native";
 import {RootStackParamList} from "../RootStackParamList";
 import { Button as ButtonPaper, Dialog, Portal, Provider, Paragraph } from 'react-native-paper';
-import {AddClotheForm} from "../compononents/AddClotheForm";
+import {AddClotheForm} from "../components/AddClotheForm";
 
 type Props = {
     navigation: NavigationProp<RootStackParamList>;

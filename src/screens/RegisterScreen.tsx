@@ -2,7 +2,7 @@ import {NavigationProp} from "@react-navigation/native";
 import {RootStackParamList} from "../RootStackParamList";
 import React, {FunctionComponent, useState} from "react";
 import {SafeAreaView} from "react-native";
-import {register} from "../compononents/Register";
+import {register} from "../components/Register";
 import {TextInput, Button} from "react-native-paper";
 
 type Props = {
