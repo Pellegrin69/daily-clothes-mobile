@@ -1,9 +1,9 @@
 import {NavigationProp, RouteProp} from "@react-navigation/native";
 import {RootStackParamList} from "../RootStackParamList";
 import React, {FunctionComponent, useState} from "react";
-import {SafeAreaView, View} from "react-native";
+import {SafeAreaView} from "react-native";
 import {login} from "../compononents/Login";
-import {TextInput, Button, Button as ButtonPaper} from "react-native-paper";
+import {TextInput, Button} from "react-native-paper";
 
 export type Props = {
     navigation: NavigationProp<RootStackParamList>,
@@ -15,7 +15,7 @@ export const LoginScreen: FunctionComponent<Props> = ({navigation, route}) => {
     const [password, setPassword] = useState("");
 
     return (
-        <View style={{ flex: 1, justifyContent: "center", height: "100%" }}>
+        <SafeAreaView style={{ flex: 1, justifyContent: "center", height: "100%" }}>
             <TextInput
                 label="identifier"
                 value={identifier}
@@ -27,10 +27,17 @@ export const LoginScreen: FunctionComponent<Props> = ({navigation, route}) => {
                 value={password}
                 onChangeText={text => setPassword(text)}
                 mode={"outlined"}
+                secureTextEntry
             />
-            <Button style={{ marginTop: 30 }} onPress={() => login(identifier, password, navigation)}>Login</Button>
-            <Button style={{ marginTop: 30 }} onPress={() => navigation.navigate("Register")}>Create an account</Button>
+            <Button style={{ marginTop: 30 }}
+                    onPress={() => login(identifier, password, navigation)}>
+                Login
+            </Button>
+            <Button style={{ marginTop: 30 }}
+                    onPress={() => navigation.navigate("Register")}>
+                Create an account
+            </Button>
 
-        </View>
+        </SafeAreaView>
     );
 };
