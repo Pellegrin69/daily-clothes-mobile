@@ -1,9 +1,9 @@
 import {View, Text, Button} from "react-native";
 import React, {FunctionComponent} from "react";
 import {NavigationProp} from "@react-navigation/native";
-import {RootStackParamList} from "../../RootStackParamList";
+import {RootStackParamList} from "../RootStackParamList";
 import { Button as ButtonPaper, Dialog, Portal, Provider, Paragraph } from 'react-native-paper';
-import {AddClotheForm} from "../../Component/AddClotheForm";
+import {AddClotheForm} from "../compononents/AddClotheForm";
 
 type Props = {
     navigation: NavigationProp<RootStackParamList>;

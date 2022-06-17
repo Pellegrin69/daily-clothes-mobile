@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Switch, Paragraph, TextInput } from 'react-native-paper'
-import SelectDropdown from 'react-native-select-dropdown'
-import {View} from "react-native"
+import { TextInput, Switch, Paragraph } from 'react-native-paper';
+import {View} from "react-native";
 
 export const AddClotheForm = () => {
     const [ name, setName ] = React.useState("")

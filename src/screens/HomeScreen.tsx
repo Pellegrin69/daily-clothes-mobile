@@ -1,16 +1,31 @@
 import {Text, SafeAreaView, ScrollView, Button} from "react-native";
-import React, {FunctionComponent} from "react";
+import React, {FunctionComponent, useEffect} from "react";
 import {NavigationProp} from "@react-navigation/native";
-import {RootStackParamList} from "../../RootStackParamList";
+import {RootStackParamList} from "../RootStackParamList";
 import { Card, Title } from 'react-native-paper';
 import { Card as CardUI } from "@rneui/themed"
+import * as SecureStore from "expo-secure-store";
 
 
 type Props = {
     navigation: NavigationProp<RootStackParamList>;
 }
 
+const getValueFor = async (key: string, navigation: NavigationProp<RootStackParamList> ) => {
+    let result = await SecureStore.getItemAsync(key);
+    console.log("check useEffect")
+    if (!result) {
+        navigation.navigate("Login")
+    }
+}
+
+
 export const HomeScreen: FunctionComponent<Props> = ({navigation}) => {
+
+    useEffect(() => {
+        getValueFor("userToken", navigation)
+    }, [navigation]);
+
     return (
         <SafeAreaView style={{ height: "100%" }}>
             <ScrollView style={{ height: "100%" }}>
