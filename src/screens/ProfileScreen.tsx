@@ -3,6 +3,7 @@ import {RootStackParamList} from "../RootStackParamList";
 import React, {FunctionComponent} from "react";
 import {Button, SafeAreaView, ScrollView, Text} from "react-native";
 import {logout} from "../components/Logout";
+import {deleteUser} from "../components/Profile";
 
 type Props = {
     navigation: NavigationProp<RootStackParamList>;
