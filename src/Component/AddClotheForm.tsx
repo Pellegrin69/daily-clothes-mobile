@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { TextInput, Switch, Paragraph } from 'react-native-paper';
-import {View} from "react-native";
+import { Switch, Paragraph, TextInput } from 'react-native-paper'
+import SelectDropdown from 'react-native-select-dropdown'
+import {View} from "react-native"
 
 export const AddClotheForm = () => {
     const [ name, setName ] = React.useState("")
-    const [ color, setColor ] = React.useState("")
-    const [ category, setCategory ] = React.useState("")
-
     const [isWaterproof, setIsWaterproof] = React.useState(false)
 
     const onToggleSwitch = () => setIsWaterproof(!isWaterproof)
 
-    console.log(name, color, category, isWaterproof)
+    const countries = ["Red", "Green", "Brown", "Orange"]
+
+    console.log(name, isWaterproof)
 
     return (
         <View>
@@ -21,26 +21,62 @@ export const AddClotheForm = () => {
                 onChangeText={setName}
                 mode={"outlined"}
             />
-
-            <TextInput
-                label="color"
-                value={color}
-                onChangeText={setColor}
-                mode={"outlined"}
-            />
-
-            <TextInput
-                label="category"
-                value={category}
-                onChangeText={setCategory}
-                mode={"outlined"}
-            />
-
             <View>
                 <Paragraph>Waterproof</Paragraph>
                 <Switch
                     value={isWaterproof}
                     onValueChange={onToggleSwitch}
+                />
+            </View>
+
+            <View>
+                <Paragraph>Choose your color</Paragraph>
+                <SelectDropdown
+                    data={countries}
+                    onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index)
+                    }}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                        return selectedItem
+                    }}
+                    rowTextForSelection={(item, index) => {
+                        return item
+                    }}
+                    dropdownIconPosition={"left"}
+                />
+            </View>
+
+            <View>
+                <Paragraph>Choose the category of your clothe</Paragraph>
+                <SelectDropdown
+                    data={countries}
+                    onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index)
+                    }}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                        return selectedItem
+                    }}
+                    rowTextForSelection={(item, index) => {
+                        return item
+                    }}
+                    dropdownIconPosition={"left"}
+                />
+            </View>
+
+            <View>
+                <Paragraph>Choose the size of your clothe</Paragraph>
+                <SelectDropdown
+                    data={countries}
+                    onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index)
+                    }}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                        return selectedItem
+                    }}
+                    rowTextForSelection={(item, index) => {
+                        return item
+                    }}
+                    dropdownIconPosition={"left"}
                 />
             </View>
         </View>
