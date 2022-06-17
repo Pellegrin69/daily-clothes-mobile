@@ -9,9 +9,7 @@ export const AddClotheForm = () => {
 
     const onToggleSwitch = () => setIsWaterproof(!isWaterproof)
 
-    const countries = ["Red", "Green", "Brown", "Orange"]
-
-    console.log(name, isWaterproof)
+    const clothes = ["nike", "adidas", "puma"]
 
     return (
         <View>
@@ -32,7 +30,7 @@ export const AddClotheForm = () => {
             <View>
                 <Paragraph>Choose your color</Paragraph>
                 <SelectDropdown
-                    data={countries}
+                    data={clothes}
                     onSelect={(selectedItem, index) => {
                         console.log(selectedItem, index)
                     }}
@@ -49,7 +47,7 @@ export const AddClotheForm = () => {
             <View>
                 <Paragraph>Choose the category of your clothe</Paragraph>
                 <SelectDropdown
-                    data={countries}
+                    data={clothes}
                     onSelect={(selectedItem, index) => {
                         console.log(selectedItem, index)
                     }}
@@ -66,7 +64,7 @@ export const AddClotheForm = () => {
             <View>
                 <Paragraph>Choose the size of your clothe</Paragraph>
                 <SelectDropdown
-                    data={countries}
+                    data={clothes}
                     onSelect={(selectedItem, index) => {
                         console.log(selectedItem, index)
                     }}
